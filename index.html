@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Ravuri Bhavya Neeraj — Full Stack Developer</title>
+<meta name="description" content="Portfolio of Ravuri Bhavya Neeraj, Full Stack Developer at HCL Technologies — Java, Spring Boot, React.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b1220;
+    --bg-alt: #0f1a2b;
+    --panel: #101c30;
+    --panel-line: rgba(148,177,209,0.14);
+    --grid-line: rgba(148,177,209,0.06);
+    --text: #e7ecf3;
+    --text-dim: #93a4bd;
+    --text-faint: #5c6b85;
+    --cyan: #5eead4;
+    --amber: #f2b84b;
+    --amber-dim: rgba(242,184,75,0.15);
+    --cyan-dim: rgba(94,234,212,0.12);
+    --radius: 3px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/48px 48px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/48px 48px,
+      var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--cyan-dim); color:var(--text);}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} html{scroll-behavior:auto;} }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    color:var(--cyan);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:"--"; color:var(--text-faint);}
+
+  /* NAV */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,18,32,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--panel-line);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:14px 28px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{
+    font-family:var(--mono); font-size:14px; color:var(--text);
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--cyan); box-shadow:0 0 8px var(--cyan);}
+  nav.links{display:flex; gap:26px; font-family:var(--mono); font-size:13px;}
+  nav.links a{color:var(--text-dim); position:relative; padding:4px 0; transition:color .2s ease;}
+  nav.links a:hover, nav.links a.active{color:var(--cyan);}
+  nav.links a.active::after{content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--cyan);}
+  .nav-toggle{display:none; flex-direction:column; gap:4px; background:none; border:0; cursor:pointer; padding:6px;}
+  .nav-toggle span{width:20px; height:2px; background:var(--text);}
+
+  /* HERO */
+  .hero{max-width:1080px; margin:0 auto; padding:88px 28px 64px; display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
+  .hero-copy .schema-tag{font-family:var(--mono); font-size:12.5px; color:var(--amber); background:var(--amber-dim); display:inline-block; padding:3px 9px; border-radius:var(--radius); margin-bottom:20px; letter-spacing:.04em;}
+  .hero-copy h1{font-family:var(--display); font-weight:700; font-size:44px; line-height:1.12; letter-spacing:-0.01em; margin-bottom:16px;}
+  .hero-copy h1 span{color:var(--cyan);}
+  .hero-copy .role{font-family:var(--mono); font-size:16px; color:var(--text-dim); margin-bottom:22px;}
+  .hero-copy p.lede{font-size:16px; color:var(--text-dim); max-width:52ch; margin-bottom:30px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px; padding:11px 20px; border-radius:var(--radius);
+    display:inline-flex; align-items:center; gap:8px; transition:transform .15s ease, background .2s ease, border-color .2s ease;
+    border:1px solid var(--panel-line);
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--cyan); color:#08141f; font-weight:600; border-color:var(--cyan);}
+  .btn-primary:hover{background:#7ff0dc;}
+  .btn-ghost{color:var(--text); background:transparent;}
+  .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan);}
+
+  .hero-card{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:6px;
+    padding:22px; position:relative; overflow:hidden;
+  }
+  .hero-card .card-head{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint);
+    display:flex; justify-content:space-between; margin-bottom:16px; letter-spacing:.05em;
+  }
+  .hero-photo{
+    width:100%; aspect-ratio:1/1; border-radius:4px; overflow:hidden;
+    border:1px solid var(--panel-line); margin-bottom:16px; background:#08111d;
+  }
+  .hero-photo img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.92) contrast(1.03);}
+  .hero-meta{font-family:var(--mono); font-size:12.5px; color:var(--text-dim); display:grid; gap:8px;}
+  .hero-meta .row{display:flex; justify-content:space-between; border-bottom:1px dashed var(--panel-line); padding-bottom:8px;}
+  .hero-meta .row:last-child{border-bottom:0; padding-bottom:0;}
+  .hero-meta .k{color:var(--text-faint);}
+  .hero-meta .v{color:var(--text);}
+  .hero-meta .v a:hover{color:var(--cyan);}
+
+  /* SECTIONS */
+  section{max-width:1080px; margin:0 auto; padding:64px 28px; border-top:1px solid var(--panel-line);}
+  section .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:36px; flex-wrap:wrap; gap:8px;}
+  section h2{font-family:var(--display); font-size:26px; font-weight:600;}
+  section .count{font-family:var(--mono); font-size:12.5px; color:var(--text-faint);}
+
+  /* TABLE-STYLE ROWS (education / experience) */
+  .schema-table{border:1px solid var(--panel-line); border-radius:6px; overflow:hidden;}
+  .schema-row{
+    display:grid; grid-template-columns:200px 1fr; gap:24px;
+    padding:22px 24px; border-bottom:1px solid var(--panel-line);
+  }
+  .schema-row:last-child{border-bottom:0;}
+  .schema-row:nth-child(odd){background:rgba(255,255,255,0.012);}
+  .schema-row .col-key{font-family:var(--mono); font-size:12.5px; color:var(--text-faint);}
+  .schema-row .col-key .period{display:block; color:var(--amber); margin-top:6px; font-size:12px;}
+  .schema-row .col-val h3{font-family:var(--display); font-size:18px; font-weight:600; margin-bottom:3px;}
+  .schema-row .col-val .org{color:var(--cyan); font-size:14px; font-family:var(--mono); margin-bottom:12px; display:block;}
+  .schema-row .col-val ul{padding-left:18px; color:var(--text-dim); font-size:14.5px; display:grid; gap:7px;}
+  .schema-row .col-val .meta-line{font-family:var(--mono); font-size:12.5px; color:var(--text-dim); margin-top:4px;}
+
+  @media (max-width:640px){
+    .schema-row{grid-template-columns:1fr; gap:8px;}
+  }
+
+  /* SKILLS */
+  .skill-groups{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  .skill-group{background:var(--panel); border:1px solid var(--panel-line); border-radius:6px; padding:20px 22px;}
+  .skill-group h4{font-family:var(--mono); font-size:12px; color:var(--text-faint); letter-spacing:.06em; margin-bottom:14px; text-transform:uppercase;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--bg-alt);
+    border:1px solid var(--panel-line); padding:6px 10px; border-radius:var(--radius);
+  }
+  @media (max-width:640px){ .skill-groups{grid-template-columns:1fr;} }
+
+  /* PROJECTS */
+  .project-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  .project-card{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:6px; padding:24px;
+    display:flex; flex-direction:column; gap:12px; transition:border-color .2s ease, transform .2s ease;
+  }
+  .project-card:hover{border-color:var(--cyan); transform:translateY(-2px);}
+  .project-card .pk{font-family:var(--mono); font-size:11px; color:var(--amber); background:var(--amber-dim); display:inline-flex; width:fit-content; padding:2px 8px; border-radius:var(--radius); letter-spacing:.05em;}
+  .project-card h3{font-family:var(--display); font-size:18px; font-weight:600;}
+  .project-card p{color:var(--text-dim); font-size:14.5px;}
+  .project-card .stack{font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+  .project-card .links{display:flex; gap:16px; margin-top:auto; padding-top:6px; font-family:var(--mono); font-size:12.5px;}
+  .project-card .links a{color:var(--cyan); border-bottom:1px solid transparent;}
+  .project-card .links a:hover{border-bottom-color:var(--cyan);}
+  @media (max-width:720px){ .project-grid{grid-template-columns:1fr;} }
+
+  /* CERTIFICATIONS */
+  .cert-list{display:grid; gap:14px;}
+  .cert-row{
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    padding:16px 20px; border:1px solid var(--panel-line); border-radius:6px; background:var(--panel);
+    flex-wrap:wrap;
+  }
+  .cert-row .name{font-family:var(--display); font-size:15.5px; font-weight:600;}
+  .cert-row .issuer{font-family:var(--mono); font-size:12.5px; color:var(--text-faint); margin-top:3px;}
+  .cert-row .note{color:var(--text-dim); font-size:13.5px;}
+
+  /* CONTACT / FOOTER */
+  footer{max-width:1080px; margin:0 auto; padding:64px 28px 48px; border-top:1px solid var(--panel-line);}
+  .contact-panel{
+    background:var(--panel); border:1px solid var(--panel-line); border-radius:8px;
+    padding:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
+  }
+  .contact-panel h2{font-family:var(--display); font-size:24px; margin-bottom:8px;}
+  .contact-panel p{color:var(--text-dim); font-size:14.5px; max-width:44ch;}
+  .contact-links{display:flex; gap:12px; flex-wrap:wrap;}
+  .foot-note{font-family:var(--mono); font-size:12px; color:var(--text-faint); text-align:center; margin-top:36px;}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr; padding-top:48px;}
+    nav.links{
+      position:fixed; inset:56px 0 auto 0; background:var(--bg-alt); flex-direction:column;
+      padding:20px 28px; border-bottom:1px solid var(--panel-line);
+      transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;
+    }
+    nav.links.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+    .nav-toggle{display:flex;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><span class="dot"></span>neeraj@portfolio</a>
+    <nav class="links" id="navLinks">
+      <a href="#about">about</a>
+      <a href="#education">education</a>
+      <a href="#experience">experience</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#certifications">certs</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" id="about" style="border-top:0;">
+    <div class="hero-copy">
+      <span class="schema-tag">SELECT * FROM engineers WHERE name = 'neeraj';</span>
+      <h1>Ravuri Bhavya <span>Neeraj</span></h1>
+      <div class="role">Full Stack Developer — Java · Spring Boot · React</div>
+      <p class="lede">I build backend systems and full-stack applications with Java, Spring Boot, and React — currently at HCL Technologies, and deepening my grasp of Spring internals and system design through self-directed study alongside day-to-day engineering work.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="assets/resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+        <a class="btn btn-ghost" href="https://github.com/Bhavyaneeraj" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-ghost" href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-head"><span>profile.jpg</span><span>1:1</span></div>
+      <div class="hero-photo"><img src="assets/profile.jpg" alt="Ravuri Bhavya Neeraj"></div>
+      <div class="hero-meta">
+        <div class="row"><span class="k">role</span><span class="v">Full Stack Developer</span></div>
+        <div class="row"><span class="k">company</span><span class="v">HCL Technologies</span></div>
+        <div class="row"><span class="k">location</span><span class="v">Hyderabad, India</span></div>
+        <div class="row"><span class="k">email</span><span class="v"><a href="mailto:bannubhavyaneeraj@gmail.com">bannubhavyaneeraj@gmail.com</a></span></div>
+        <div class="row"><span class="k">phone</span><span class="v"><a href="tel:+916300478863">+91 63004 78863</a></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <div><span class="eyebrow">TABLE education</span><h2>Education</h2></div>
+      <span class="count">3 rows</span>
+    </div>
+    <div class="schema-table">
+      <div class="schema-row">
+        <div class="col-key">St. Martin's Engineering College<span class="period">2021 – 2025</span></div>
+        <div class="col-val">
+          <h3>B.E. Computer Science &amp; Engineering (AI &amp; ML)</h3>
+          <span class="org">GPA: 8.22</span>
+        </div>
+      </div>
+      <div class="schema-row">
+        <div class="col-key">Narayana Junior College<span class="period">2019 – 2021</span></div>
+        <div class="col-val">
+          <h3>MPC (Maths, Physics, Chemistry)</h3>
+          <span class="org">Marks: 970</span>
+        </div>
+      </div>
+      <div class="schema-row">
+        <div class="col-key">Narayana High School<span class="period">2018 – 2019</span></div>
+        <div class="col-val">
+          <h3>SSC</h3>
+          <span class="org">CGPA: 9.7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <div><span class="eyebrow">TABLE experience</span><h2>Experience</h2></div>
+      <span class="count">1 row</span>
+    </div>
+    <div class="schema-table">
+      <div class="schema-row">
+        <div class="col-key">HCL Technologies<span class="period">Sep 2025 – Present</span></div>
+        <div class="col-val">
+          <h3>Full Stack Developer</h3>
+          <span class="org">Hyderabad, India</span>
+          <ul>
+            <li>Completed a 3-month Java Full Stack training program covering Java, Spring Boot, Spring Data JPA, Spring Security, REST APIs, React, Bootstrap, and MySQL.</li>
+            <li>Built a full-stack E-Commerce Application using Spring Boot, React.js, and PostgreSQL — CRUD operations, Spring Security authentication, and reviews/ratings management.</li>
+            <li>Built and consumed RESTful APIs to integrate the React frontend with the Spring Boot backend.</li>
+            <li>Implemented authentication and role-based authorization with Spring Security to secure endpoints and user workflows.</li>
+            <li>Gained hands-on experience across enterprise application development, document template design, debugging, and production support.</li>
+            <li>Continuously deepening expertise in core Java, Spring internals, and system design through self-directed study.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <div><span class="eyebrow">TABLE skills</span><h2>Skills</h2></div>
+      <span class="count">6 groups</span>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <div class="chip-row">
+          <span class="chip">Java</span><span class="chip">JavaScript</span><span class="chip">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Frameworks</h4>
+        <div class="chip-row">
+          <span class="chip">Spring Boot</span><span class="chip">Spring MVC</span><span class="chip">Spring Data JPA</span><span class="chip">Spring Security</span><span class="chip">Spring Cloud</span><span class="chip">React.js</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Data &amp; Systems</h4>
+        <div class="chip-row">
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Apache Kafka</span><span class="chip">Microservices</span><span class="chip">System Design</span><span class="chip">Scalability &amp; Load Balancing</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Web &amp; Markup</h4>
+        <div class="chip-row">
+          <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Bootstrap</span><span class="chip">REST APIs</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools</h4>
+        <div class="chip-row">
+          <span class="chip">Git</span><span class="chip">VS Code</span><span class="chip">STS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Also Applied</h4>
+        <div class="chip-row">
+          <span class="chip">Machine Learning</span><span class="chip">Leadership</span><span class="chip">Adaptability</span><span class="chip">Collaboration</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <div><span class="eyebrow">TABLE projects</span><h2>Projects</h2></div>
+      <span class="count">5 rows</span>
+    </div>
+    <div class="project-grid">
+      <div class="project-card">
+        <span class="pk">IN PROGRESS</span>
+        <h3>Auth Microservice</h3>
+        <p>Standalone authentication service with JWT-based stateless auth, Spring Security, role-based access control (USER/ADMIN), PostgreSQL with Flyway migrations, and Swagger-documented endpoints.</p>
+        <span class="stack">Java · Spring Boot · Spring Security · JWT · PostgreSQL · Flyway</span>
+        <div class="links"><a href="https://github.com/Bhavyaneeraj" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+      <div class="project-card">
+        <span class="pk">PRIMARY KEY</span>
+        <h3>E-Commerce Web Application</h3>
+        <p>Full-stack e-commerce app for product listings, user authentication, shopping cart, and order processing, with a responsive React + Bootstrap UI backed by Spring Boot REST APIs.</p>
+        <span class="stack">Java · Spring Boot · Spring Security · React · Bootstrap · MySQL</span>
+        <div class="links"><a href="https://github.com/Bhavyaneeraj" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+      <div class="project-card">
+        <span class="pk">EVENT-DRIVEN</span>
+        <h3>Order Processing Pipeline</h3>
+        <p>Event-driven order pipeline using Kafka producers/consumers for order creation, inventory updates, and notifications, with consumer groups and partitioning for parallel, fault-tolerant processing.</p>
+        <span class="stack">Java · Spring Boot · Apache Kafka · PostgreSQL</span>
+        <div class="links"><a href="https://github.com/Bhavyaneeraj" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+      <div class="project-card">
+        <span class="pk">ML-POWERED</span>
+        <h3>MindGuard</h3>
+        <p>AI-powered web app that detects early signs of child depression from browsing and social behavior data, with real-time risk prediction, dashboards, alerts, and trend tracking.</p>
+        <span class="stack">Django · ML · SQLite · Bootstrap · JavaScript</span>
+        <div class="links"><a href="https://github.com/Bhavyaneeraj/Mindguard" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+      <div class="project-card">
+        <span class="pk">PREDICTIVE</span>
+        <h3>AI-Powered Future Skill Prediction</h3>
+        <p>Predictive analytics system forecasting future skill demand across industries, using Deep Neural Networks and Random Forest on job postings and economic-trend data.</p>
+        <span class="stack">Python · DNN · Random Forest · Data Analysis</span>
+        <div class="links"><a href="https://github.com/Bhavyaneeraj/FutureSkillPrediction" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="section-head">
+      <div><span class="eyebrow">TABLE certifications</span><h2>Certifications</h2></div>
+      <span class="count">2 rows</span>
+    </div>
+    <div class="cert-list">
+      <div class="cert-row">
+        <div>
+          <div class="name">Python Full Stack Development</div>
+          <div class="issuer">SSSIT</div>
+        </div>
+        <div class="note">Python, HTML, CSS, JavaScript</div>
+      </div>
+      <div class="cert-row">
+        <div>
+          <div class="name">Machine Learning Certification</div>
+          <div class="issuer">Udemy</div>
+        </div>
+        <div class="note">Supervised &amp; unsupervised learning, model evaluation, optimization</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="contact-panel">
+      <div>
+        <h2>Let's connect</h2>
+        <p>Open to full-stack and backend engineering opportunities. Reach out by email, phone, or GitHub.</p>
+      </div>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:bannubhavyaneeraj@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="tel:+916300478863">+91 63004 78863</a>
+        <a class="btn btn-ghost" href="https://github.com/Bhavyaneeraj" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="foot-note">© 2026 Ravuri Bhavya Neeraj — built with HTML &amp; CSS, hosted on GitHub Pages.</div>
+  </footer>
+
+</main>
+
+<script>
+  // mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // scroll-spy active nav state
+  const sections = document.querySelectorAll('main section[id], .hero[id]');
+  const navAnchors = document.querySelectorAll('nav.links a');
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        navAnchors.forEach(a => a.classList.remove('active'));
+        const match = document.querySelector(`nav.links a[href="#${entry.target.id}"]`);
+        if(match) match.classList.add('active');
+      }
+    });
+  }, {rootMargin: '-40% 0px -55% 0px'});
+  sections.forEach(s => spy.observe(s));
+</script>
+
+</body>
+</html>
